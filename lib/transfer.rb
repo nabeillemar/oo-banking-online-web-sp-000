@@ -26,12 +26,12 @@ def execute_transaction
 
 
 def reverse_transfer
-  if self.execute_transaction && valid? && @receiver.balance > amount && status == "complete"
-  @receiver.balance = @receiver.balance - amount
-  @sender.balance = @sender.balance + amount
-  @status = "reversed"
-  end
-end
+   if @status == "complete"
+     @sender.balance += @amount
+     @receiver.balance -= @amount
+     @status = "reversed"
+   end
+ end
 
 end 
 
